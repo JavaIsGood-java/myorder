@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.DrawhDao">
+	<insert id="createDrawh" parameterType="com.po.Drawh">
+		insert into drawh(dusername,dfsal,dsal,dasal,ddate,dzhi,dstatus) values(#{dusername},#{dfsal},#{dsal},#{dasal},#{ddate},#{dzhi},#{dstatus})
+	</insert>
+	
+	<select id="selectByDusername" parameterType="String" resultType="com.po.Drawh">
+		select * from drawh where dusername=#{dusername} order by ddate desc
+	</select>
+</mapper>

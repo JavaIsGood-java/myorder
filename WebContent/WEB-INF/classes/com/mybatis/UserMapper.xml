@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.UserDao">
+	
+	<!-- 根据用户名取得用户全部信息 -->
+	<select id="selectByUsername" parameterType="com.po.User" resultType="com.po.User">
+		select id,username,password,sal,lsal,zdate,ddate,ip,iss from user where username=#{username}
+	</select>
+	
+	<!-- 用户修改密码 -->
+	<update id="updatePassword" parameterType="com.po.User">
+		update user set password=#{password} where username=#{username}
+	</update>
+	
+	
+	<!-- 根据用户名修改用户登录时间和ip -->
+	<update id="updateUser" parameterType="com.po.User">
+		update user set ddate=#{ddate},ip=#{ip} where username=#{username}
+	</update>
+	
+	<!-- 修改金额 -->
+	<update id="updateSal" parameterType="com.po.User">
+		update user set sal=#{sal} where username=#{username}
+	</update>
+	
+	<update id="updateLsal" parameterType="com.po.User">
+		update user set lsal=lsal+#{lsal} where username=#{username}
+	</update>
+	
+	<update id="updateSalAndL" parameterType="com.po.User">
+		update user set lsal=#{lsal},sal=#{sal} where username=#{username}
+	</update>
+	
+	<insert id="createUser" parameterType="com.po.User">
+		insert into user(username,password,zdate,ip) value(#{username},#{password},#{zdate},#{ip})
+	</insert>
+	
+</mapper>

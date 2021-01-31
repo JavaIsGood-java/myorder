@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.OrderbDao">
+	
+	<insert id="createOrderb" parameterType="com.po.Orderb">
+		insert into orderb(busername,bid,bip,bdate,bcode,bname,bphone,bplace,bprice,bremarks,bstatus) 
+		values(#{busername},#{bid},#{bip},#{bdate},#{bcode},#{bname},#{bphone},#{bplace},#{bprice},#{bremarks},#{bstatus})
+	</insert>
+	
+	<select id="getAllOrderb" parameterType="com.util.pojo.OrderbPage" resultType="com.po.Orderb">
+		select busername,bid,bip,bdate,bcode,bname,bphone,bplace,bprice,bremarks,bstatus,bjusername,bjdate from orderb where busername=#{keyword} order by bdate desc limit #{index},#{size}
+	</select>
+	
+	<select id="getCountByUsername" parameterType="String" resultType="int">
+		select count(*) from orderb where busername=#{busername}
+	</select>
+	
+	<select id="getOrderbBybid" parameterType="String" resultType="com.po.Orderb">
+		select busername,bid,bip,bdate,bcode,bname,bphone,bplace,bprice,bremarks,bstatus,bjusername,bjdate from orderb
+		where bid=#{bid}
+	</select>
+	
+	<update id="updateOrderb" parameterType="com.po.Orderb">
+		update orderb set bstatus=#{bstatus}
+		<if test="bjusername!=null">
+			,bjusername=#{bjusername}
+		</if>
+		<if test="bjdate!=null">
+			,bjdate=#{bjdate}
+		</if>
+		 where bid=#{bid};
+	</update>
+
+</mapper>

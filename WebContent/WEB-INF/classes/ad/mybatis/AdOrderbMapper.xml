@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ad.dao.AdOrderbDao">
+	<select id="getObByBid" parameterType="String" resultType="ad.po.Orderb">
+		select * from orderb where bid=#{bid}
+	</select>
+	
+	
+	<select id="getOrderbBykeyCount" parameterType="String" resultType="int">
+		<bind name="key1" value="'%'+keyword+'%'"/>
+		select count(*) from orderb where concat(busername,bip,bdate,bcode,bname,bphone,bplace,bprice,bremarks,bstatus,bjusername,bjdate) like #{key1}
+	</select>
+	
+	<select id="getOrderbBykey" parameterType="ad.util.pojo.AdOrderbPage" resultType="ad.po.Orderb">
+		<bind name="key2" value="'%'+keyword+'%'"/>
+		select * from orderb where concat(busername,bip,bdate,bcode,bname,bphone,bplace,bprice,bremarks,bstatus,bjusername,bjdate) like #{key2} order by bdate desc limit #{index},#{size} 
+	</select>
+</mapper>

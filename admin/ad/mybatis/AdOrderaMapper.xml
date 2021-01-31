@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ad.dao.AdOrderaDao">
+	<select id="getAll" resultType="ad.po.Ordera">
+		select id,aid,ausername,aip,adate,acode,aname,aphone,aplace,aprice,aremarks from ordera
+	</select>
+	
+	<select id="getOrderaByAid" parameterType="String" resultType="ad.po.Ordera">
+		select id,aid,ausername,aip,adate,acode,aname,aphone,aplace,aprice,aremarks from ordera where aid=#{aid}
+	</select>
+</mapper>

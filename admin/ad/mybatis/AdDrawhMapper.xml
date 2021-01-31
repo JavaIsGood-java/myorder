@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ad.dao.AdDrawhDao">
+	
+	
+	<select id="getAllDrawhByDstatus" parameterType="String" resultType="ad.po.Drawh"> 
+		select * from drawh where dstatus=#{dstatus}
+	</select>
+	
+	<select id="getDrawhById" parameterType="int" resultType="ad.po.Drawh">
+		select * from drawh where id=#{id}
+	</select>
+ 	
+ 	<select id="getDsal" resultType="double">
+ 		select sum(dsal) from drawh where dstatus='待审核'
+ 	</select>
+ 	
+ 	<update id="updateDstatus" parameterType="ad.po.Drawh">
+ 		update drawh set dstatus=#{dstatus},ddate=#{ddate} where id=#{id}
+ 	</update>
+ 	
+ 	<select id="selectBykey" parameterType="String" resultType="ad.po.Drawh">
+ 		<bind name="key" value="'%'+keyword+'%'"/>
+ 		select id,dusername,dfsal,dsal,dasal,ddate,dzhi,dstatus,dctime from drawh where concat(id,dusername,dfsal,dsal,dasal,ddate,dzhi,dstatus,dctime) like #{key} order by ddate desc
+ 	</select>
+ 	
+</mapper>

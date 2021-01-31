@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.OrdercDao">
+
+	<insert id="createOrderc" parameterType="com.po.Orderc">
+		insert into orderc VALUES(#{cusername},#{cid},#{cip},#{cdate},#{ccode},#{cname},#{cphone},#{cplace},#{cprice},#{cremarks},#{cstatus},#{cfusername},#{cfdate})
+	</insert>
+	
+	<select id="getCountByUsername" parameterType="String" resultType="int">
+		select count(*) from orderc where cusername=#{username}
+	</select>
+	
+	<select id="getAllOrderc" parameterType="com.util.pojo.OrdercPage" resultType="com.po.Orderc">
+		select cusername,cid,cip,cdate,ccode,cname,cphone,cplace,cprice,cremarks,cstatus,cfusername,cfdate from orderc where cusername=#{keyword} order by cdate desc limit #{index},#{size}
+	</select>
+	
+	<select id="getOrderc" parameterType="String" resultType="com.po.Orderc">
+		select cusername,cid,cip,cdate,ccode,cname,cphone,cplace,cprice,cremarks,cstatus,cfusername,cfdate from orderc where cid=#{cid}
+	</select>
+	
+	<update id="changeCstatus" parameterType="com.po.Orderc">
+		update orderc set cstatus=#{cstatus} where cid=#{cid}
+	</update>
+</mapper>

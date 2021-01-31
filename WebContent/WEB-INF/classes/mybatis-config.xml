@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis-org//DTD Config 3.0//EN" "http:mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<mappers>
+		<!-- 配置映射文件（前台） -->
+		<mapper resource="com/mybatis/UserMapper.xml"></mapper>
+		<mapper resource="com/mybatis/OrderaMapper.xml"></mapper>
+		<mapper resource="com/mybatis/OrderbMapper.xml"></mapper>
+		<mapper resource="com/mybatis/OrdercMapper.xml"></mapper>
+		<mapper resource="com/mybatis/DrawhMapper.xml"></mapper>
+		<mapper resource="com/mybatis/ApproveMapper.xml"></mapper>
+		<mapper resource="com/mybatis/ChongMapper.xml"></mapper>
+		
+		<!-- 配置映射文件（后台） -->
+		<mapper resource="ad/mybatis/AduserMapper.xml"></mapper>
+		<mapper resource="ad/mybatis/AdApproveMapper.xml"></mapper>
+		<mapper resource="ad/mybatis/AdfuserMapper.xml"></mapper>
+		<mapper resource="ad/mybatis/AdOrderaMapper.xml"></mapper>
+		<mapper resource="ad/mybatis/AdDrawhMapper.xml"></mapper>
+		<mapper resource="ad/mybatis/AdOrderbMapper.xml"></mapper>
+		<mapper resource="ad/mybatis/AdOrdercMapper.xml"></mapper>
+		<mapper resource="ad/mybatis/AdChongMapper.xml"></mapper>
+	</mappers>
+</configuration>
